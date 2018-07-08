@@ -24,6 +24,17 @@ locals {
 }
 
 locals {
+   k8s_versions = {
+    "1.8.11" = {
+      kubelet_hash   = "e032c09c2af8cd3d1ce0c314c620b45cda41db34"
+      kubectl_hash   = "6a089bec1802611ad9f5120c486a6e0e00095279"
+      cni_hash       = "1d9788b0f5420e1a219aad2cb8681823fc515e7c"
+      cni_file_name  = "cni-0799f5732f2a11b329d9e3d51b9c8f2e3759f2ff.tar.gz"
+      utils_hash     = "42b15a0a0a56531750bde3c7b08d0cf27c170c48"
+      protokube_hash = "0b1f26208f8f6cc02468368706d0236670fec8a2"
+      ami_name       = "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-20180306"
+      docker_version = "1.13.1"
+    }
   k8s_versions = {
     "1.8.7" = {
       kubelet_hash   = "0f3a59e4c0aae8c2b2a0924d8ace010ebf39f48e"
