@@ -1,9 +1,9 @@
 ################################################################################
 # Cluster using public subnets
 
-module "cluster1" {
+module "staging" {
   source                    = "../module"
-  kubernetes_version        = "1.8.6"
+  kubernetes_version        = "1.8.11"
   sg_allow_ssh              = "${aws_security_group.allow_ssh.id}"
   sg_allow_http_s           = "${aws_security_group.allow_http.id}"
   cluster_name              = "cluster1"
@@ -26,29 +26,29 @@ module "cluster1" {
 ################################################################################
 # Cluster using private subnets
 
-module "cluster2" {
-  source                    = "../module"
-  kubernetes_version        = "1.7.10"
-  sg_allow_ssh              = "${aws_security_group.allow_ssh.id}"
-  sg_allow_http_s           = "${aws_security_group.allow_http.id}"
-  cluster_name              = "cluster2"
-  cluster_fqdn              = "cluster2.${aws_route53_zone.k8s_zone.name}"
-  route53_zone_id           = "${aws_route53_zone.k8s_zone.id}"
-  kops_s3_bucket_arn        = "${aws_s3_bucket.kops.arn}"
-  kops_s3_bucket_id         = "${aws_s3_bucket.kops.id}"
-  vpc_id                    = "${aws_vpc.main_vpc.id}"
-  instance_key_name         = "jag_key"
-  node_asg_desired          = 1
-  node_asg_min              = 1
-  node_asg_max              = 1
-  master_instance_type      = "m4.large"
-  node_instance_type        = "m4.large"
-  internet_gateway_id       = "${aws_internet_gateway.public.id}"
-  public_subnet_cidr_blocks = ["${local.cluster2_public_subnet_cidr_blocks}"]
-  private_subnet_ids        = ["${aws_subnet.nat_private.*.id}"]
-  kops_dns_mode             = "private"
-  kubernetes_networking     = "flannel"
-}
+#module "cluster2" {
+#  source                    = "../module"
+#  kubernetes_version        = "1.7.10"
+#  sg_allow_ssh              = "${aws_security_group.allow_ssh.id}"
+#  sg_allow_http_s           = "${aws_security_group.allow_http.id}"
+#  cluster_name              = "cluster2"
+#  cluster_fqdn              = "cluster2.${aws_route53_zone.k8s_zone.name}"
+#  route53_zone_id           = "${aws_route53_zone.k8s_zone.id}"
+#  kops_s3_bucket_arn        = "${aws_s3_bucket.kops.arn}"
+#  kops_s3_bucket_id         = "${aws_s3_bucket.kops.id}"
+#  vpc_id                    = "${aws_vpc.main_vpc.id}"
+#  instance_key_name         = "jag_key"
+#  node_asg_desired          = 1
+#  node_asg_min              = 1
+#  node_asg_max              = 1
+#  master_instance_type      = "m4.large"
+#  node_instance_type        = "m4.large"
+#  internet_gateway_id       = "${aws_internet_gateway.public.id}"
+#  public_subnet_cidr_blocks = ["${local.cluster2_public_subnet_cidr_blocks}"]
+#  private_subnet_ids        = ["${aws_subnet.nat_private.*.id}"]
+#  kops_dns_mode             = "private"
+#  kubernetes_networking     = "flannel"
+#}
 
 resource "random_id" "s3_suffix" {
   byte_length = 3
