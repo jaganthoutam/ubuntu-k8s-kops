@@ -1,6 +1,6 @@
 # Full terraform example
 
-You can run `terraform apply` from this directory to build 2 example clusters with shared VPC and IAM resources. `cluster1` uses public subnets and `cluster2` uses private subnets with NAT gateways.
+You can run `terraform apply` from this directory to build example cluster with VPC and IAM resources. `staging` uses public subnets.  (You can also enable another cluster or add more cluster.. NOTE: if you add more clusters it will use shared VPC.)
 
 Note that this example is using non-existent domain and private DNS mode so a configuration change is required to connect to the Kubernetes API after creation:
 
