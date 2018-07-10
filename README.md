@@ -9,12 +9,12 @@ Pull requests welcome.
 ## Example
 
 ```hcl
-module "cluster1" {
+module "staging" {
   source                      = "github.com/FutureSharks/tf-kops-cluster/module"
   sg_allow_ssh                = "${aws_security_group.allow_ssh.id}"
   sg_allow_http_s             = "${aws_security_group.allow_http.id}"
-  cluster_name                = "cluster1"
-  cluster_fqdn                = "cluster1.mydomain.com"
+  cluster_name                = "staging"
+  cluster_fqdn                = "staging.k8.thoutam.com"
   route53_zone_id             = "${aws_route53_zone.my_zone.id}"
   kops_s3_bucket_arn          = "${aws_s3_bucket.kops.arn}"
   kops_s3_bucket_id           = "${aws_s3_bucket.kops.id}"
