@@ -62,21 +62,24 @@ resource "aws_vpc" "main_vpc" {
   instance_tenancy     = "default"
 
   tags {
-    Name = "main_vpc"
+    Name = "k8s_vpc"
   }
 }
 
 resource "aws_route53_zone" "vpc_internal_zone" {
   name          = "local.vpc"
   comment       = "Internal zone"
-  vpc_id        = "${aws_vpc.main_vpc.id}"
+  vpc {
+   vpc_id           = "${aws_vpc.main_vpc.id}"
+  }
   force_destroy = true
 }
 
 resource "aws_route53_zone" "k8s_zone" {
   name          = "${var.domain_name}"
+  vpc {
   vpc_id        = "${aws_vpc.main_vpc.id}"
-  force_destroy = true
+  }
 }
 
 resource "aws_vpc_dhcp_options" "dhcp_options" {
