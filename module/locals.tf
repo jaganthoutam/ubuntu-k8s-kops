@@ -35,7 +35,6 @@ locals {
       ami_name       = "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-20180306"
       docker_version = "1.13.1"
     }
-  k8s_versions = {
     "1.8.7" = {
       kubelet_hash   = "0f3a59e4c0aae8c2b2a0924d8ace010ebf39f48e"
       kubectl_hash   = "36340bb4bb158357fe36ffd545d8295774f55ed9"

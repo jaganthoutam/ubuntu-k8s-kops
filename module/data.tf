@@ -8,11 +8,12 @@ data "aws_region" "current" {}
 
 data "aws_ami" "k8s_ami" {
   most_recent = true
-
   filter {
     name   = "name"
     values = ["${local.ami_name}"]
   }
+
+  owners = ["099720109477"] 
 
   filter {
     name   = "owner-id"

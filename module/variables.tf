@@ -36,7 +36,7 @@ variable "public_subnet_cidr_blocks" {
 # Force single master. Can be used when a master per AZ is not required or if running
 # in a region with only 2 AZs.
 variable "force_single_master" {
-  default = false
+  default = true
 }
 
 # Instance type for the master
