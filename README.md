@@ -10,7 +10,7 @@ Pull requests welcome.
 
 ```hcl
 module "staging" {
-  source                      = "github.com/FutureSharks/tf-kops-cluster/module"
+  source                      = "/module"
   sg_allow_ssh                = "${aws_security_group.allow_ssh.id}"
   sg_allow_http_s             = "${aws_security_group.allow_http.id}"
   cluster_name                = "staging"
