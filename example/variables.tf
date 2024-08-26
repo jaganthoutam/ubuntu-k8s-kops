@@ -9,5 +9,5 @@ variable "k8s_versiuon" {
 }
 
 variable "environment" {
-  default = ""
+  default = "TF_ENVIRONT"
 }
