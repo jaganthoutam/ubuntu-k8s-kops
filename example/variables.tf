@@ -7,3 +7,7 @@ variable "domain_name" {
 variable "k8s_versiuon" {
   default = "1.8.11"
 }
+
+variable "environment" {
+  default = ""
+}
