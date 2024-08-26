@@ -1,7 +1,7 @@
 ################################################################################
 # Cluster using public subnets
 
-module "staging" {
+module "env" {
   source                    = "../module"
   kubernetes_version        = "1.8.11"
   sg_allow_ssh              = "${aws_security_group.allow_ssh.id}"
@@ -21,6 +21,7 @@ module "staging" {
   internet_gateway_id       = "${aws_internet_gateway.public.id}"
   public_subnet_cidr_blocks = ["${local.cluster1_public_subnet_cidr_blocks}"]
   kops_dns_mode             = "private"
+  environment                = "${var.env}"
 }
 
 resource "random_id" "s3_suffix" {
